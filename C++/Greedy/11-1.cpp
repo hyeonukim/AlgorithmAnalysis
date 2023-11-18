@@ -14,3 +14,36 @@ EX)
     OR
     Group 1: 1, Group 2: 2,2 since we can always leave 2,3 in village
 */
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n;
+vector<int> arr;
+
+int main(){
+    cin >> n;
+
+    for (int i = 0; i < n; i++){
+        int x;
+        cin >> x;
+        arr.push_back(x);
+    }
+
+    //sort the array so we can get the smallest possible groups first
+    sort(arr.begin(), arr.end());
+
+    int count = 0;
+    int res = 0;
+
+    //for every element in array, increment the count, then per group that we get increase the group count
+    for (int i = 0; i < n; i++){
+        count += 1;
+        if (count >= arr[i]){
+            res += 1;
+            count = 0;
+        }
+    }    
+    cout << res << '\n';
+}
