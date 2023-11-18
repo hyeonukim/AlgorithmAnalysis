@@ -12,3 +12,34 @@ EX)
     7 - possible (3,2,1,1)
     8 - impossible - therefore, res = 8
 */
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n;
+vector<int> arr;
+
+int main(){
+    cin >> n;
+
+    for (int i = 0; i < n; i++){
+        int x;
+        cin >> x;
+        arr.push_back(x);
+    }
+
+    int target = 1;
+    //sort the array so we can start from the smallest number possible
+    sort(arr.begin(), arr.end());
+
+    for (int i = 0; i < n; i++){
+        //if target is smaller than arr[i] then number is hard to achieve, therefore break
+        if (target < arr[i]){
+            break;
+        }
+        target += arr[i];
+    }
+
+    cout << target << '\n';
+}
